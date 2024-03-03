@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+  </head>
+  <body>
+    <form action="codeonserverside.jsp" method="post">
+      <center>
+        <table style="width: 400px" border="1">
+          <tr>
+            <td>
+              <!-- <label for="Name">Name</label> -->
+              Name
+            </td>
+            <td>
+              <input
+                required
+                placeholder="enter your name ex: john"
+                type="text"
+                name="Name"
+                id="Name"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td>
+              <input type="number" name="Age" id="Age" min="18" max="60" />
+            </td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>
+              <textarea name="Address" id="Address"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>
+              <input type="radio" value="F" name="gender" id="radF" />
+              <!-- <label for="radF">Female</label> -->
+              <input type="radio" value="M" name="gender" />Male
+              <input type="radio" value="O" name="gender" />Other
+            </td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td>
+              <select name="country" id="country">
+                <option value="1">India</option>
+                <option value="2">UK</option>
+                <option value="3">USA</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Hobbies</td>
+            <td>
+              <select name="hobby" id="hobby" multiple>
+                <option value="11">Reading</option>
+                <option value="22">Writing</option>
+                <option value="33">Sports</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+              <input
+                required
+                placeholder="enter password"
+                type="password"
+                name="password"
+                id="password"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              I Agree
+              <input type="checkbox" name="agreement" id="agreement" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input
+                type="submit"
+                name="btnSubmit"
+                id="btnSubmit"
+                value="Register"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </center>
+    </form>
+  </body>
+</html>

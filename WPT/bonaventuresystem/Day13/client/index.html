@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap.min.css" />
+    <script src="assets/jquery-1.9.1.min.js"></script>
+    <script src="assets/bootstrap.min.js"></script>
+  </head>
+  <body onload="GetData()">
+    <div class="container">
+      <br /><br /><br />
+      <center>
+        <div id="progessContainer" style="display: none">
+          <img src="assets/progress.gif" style="height: 100px; width: 100px" />
+        </div>
+      </center>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <td>No</td>
+            <td>
+              <input type="number" id="txtNo" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Name</td>
+            <td>
+              <input type="text" id="txtName" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Address</td>
+            <td>
+              <input type="text" id="txtAddress" />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-primary" onclick="AddRecord()">
+                Add Record
+              </button>
+              |
+              <button class="btn btn-info" onclick="Reset()">Reset</button>
+              |
+              <button class="btn btn-success" onclick="Update()">Update</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="alert alert-success" id="divMessage"></div>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      var latestEmpsData = [];
+      var url = "http://127.0.0.1:9999/emps";
+
+      function GetData() {
+        var refToprogessContainer = document.getElementById("progessContainer");
+        refToprogessContainer.style.display = "block";
+        // debugger;
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if ((helper.readyState == 4) & (helper.status == 200)) {
+            var emps = JSON.parse(helper.responseText);
+
+            latestEmpsData = emps;
+
+            var refToTBody = document.getElementById("tbody");
+            refToTBody.innerHTML = "";
+
+            for (i = 0; i < emps.length; i++) {
+              var row = `<tr>
+                            <td>${emps[i].No}</td> 
+                            <td>${emps[i].Name}</td> 
+                            <td>${emps[i].Address}</td> 
+                            <td>
+                                <button class="btn btn-warning" 
+                                        onclick="Edit(${emps[i].No})">
+                                    Edit
+                                </button>
+
+                                <button class="btn btn-danger" 
+                                        onclick="Remove(${emps[i].No})">
+                                    Delete
+                                </button>
+
+                              
+                            </td>
+                         </tr>`;
+              refToTBody.innerHTML = refToTBody.innerHTML + row;
+            }
+            refToprogessContainer.style.display = "none";
+          }
+        };
+        helper.open("GET", url);
+        helper.send();
+      }
+
+      function Edit(No) {
+        debugger;
+        var refToTxtNo = document.getElementById("txtNo");
+        var refToTxtName = document.getElementById("txtName");
+        var refToTxtAddress = document.getElementById("txtAddress");
+
+        for (i = 0; i < latestEmpsData.length; i++) {
+          var emp = latestEmpsData[i];
+          if (emp.No == No) {
+            setMessage("Record Found!");
+            refToTxtNo.value = emp.No;
+            refToTxtName.value = emp.Name;
+            refToTxtAddress.value = emp.Address;
+            break;
+          }
+        }
+      }
+
+      function Remove(No) {
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var response = JSON.parse(helper.responseText);
+            if (
+              response.affectedRows != undefined &&
+              response.affectedRows > 0
+            ) {
+              setMessage("Record Removed!");
+              GetData();
+            } else {
+              setMessage("Something went wrong!");
+            }
+          }
+        };
+        helper.open("DELETE", url + "/" + No);
+        helper.send();
+      }
+
+      function AddRecord() {
+        var refToTxtNo = document.getElementById("txtNo");
+        var refToTxtName = document.getElementById("txtName");
+        var refToTxtAddress = document.getElementById("txtAddress");
+
+        var emp = {
+          No: refToTxtNo.value,
+          Name: refToTxtName.value,
+          Address: refToTxtAddress.value,
+        };
+
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var response = JSON.parse(helper.responseText);
+            if (
+              response.affectedRows != undefined &&
+              response.affectedRows > 0
+            ) {
+              setMessage("Record Added!");
+              Reset();
+              GetData();
+            } else {
+              setMessage("Something went wrong!");
+            }
+          }
+        };
+        helper.open("POST", url);
+
+        helper.setRequestHeader("Content-Type", "application/json");
+        helper.send(JSON.stringify(emp));
+      }
+
+      function Reset() {
+        var refToTxtNo = document.getElementById("txtNo");
+        var refToTxtName = document.getElementById("txtName");
+        var refToTxtAddress = document.getElementById("txtAddress");
+
+        refToTxtNo.value = "";
+        refToTxtName.value = "";
+        refToTxtAddress.value = "";
+      }
+
+      function Update() {
+        var refToTxtNo = document.getElementById("txtNo");
+        var refToTxtName = document.getElementById("txtName");
+        var refToTxtAddress = document.getElementById("txtAddress");
+
+        var emp = {
+          Name: refToTxtName.value,
+          Address: refToTxtAddress.value,
+        };
+
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var response = JSON.parse(helper.responseText);
+            if (
+              response.affectedRows != undefined &&
+              response.affectedRows > 0
+            ) {
+              setMessage("Record Updated!");
+              Reset();
+              GetData();
+            } else {
+              setMessage("Something went wrong!");
+            }
+          }
+        };
+        helper.open("PUT", url + "/" + refToTxtNo.value);
+
+        helper.setRequestHeader("Content-Type", "application/json");
+        helper.send(JSON.stringify(emp));
+      }
+
+      function setMessage(message) {
+        var refTodivMessage = document.getElementById("divMessage");
+        refTodivMessage.innerText = message;
+        setTimeout(() => {
+          refTodivMessage.innerText = "";
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+SQL Exercise 2
+
+1. Display the Supplier table in the descending order of CITY.
+Ans:1. Select * From S
+    ->    order by city desc;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S2   | Jones |     10 | PARIS  |
+| S3   | Blake |     30 | PARIS  |
+| S1   | Smith |     20 | LONDON |
+| S4   | Clark |     20 | LONDON |
+| S5   | Adams |     30 | ATHENS |
++------+-------+--------+--------+
+5 rows in set (0.00 sec)
+
+2. Display the Part Table in the ascending order of CITY and within the city in the ascending order of Part names.
+Ans:2.   Select * from P
+    -> order by pname,city;
++------+-------+-------+--------+--------+
+| P#   | PNAME | COLOR | WEIGHT | CITY   |
++------+-------+-------+--------+--------+
+| P2   | Bolt  | Green |     17 | PARIS  |
+| P5   | Cam   | Blue  |     12 | PARIS  |
+| P6   | Cog   | Red   |     19 | LONDON |
+| P1   | Nut   | RED   |     12 | LONDON |
+| P4   | Screw | Red   |     14 | LONDON |
+| P3   | Screw | Blue  |     17 | ROME   |
++------+-------+-------+--------+--------+
+6 rows in set (0.00 sec)
+
+3. Display all the Suppliers with a status between 10 and 20.
+Ans:3.
+Select * from S
+    -> where status between 10 and 20 ;
++------+-------+--------+--------+
+| S#   | SNAME | STATUS | CITY   |
++------+-------+--------+--------+
+| S1   | Smith |     20 | LONDON |
+| S2   | Jones |     10 | PARIS  |
+| S4   | Clark |     20 | LONDON |
++------+-------+--------+--------+
+3 rows in set (0.00 sec)
+
+4. Display all the Parts and their Weight, which are not in the range of 10 and 15.
+Ans:4.
+Select pname,weight from p
+    -> where weight<10 or weight>15;
++-------+--------+
+| pname | weight |
++-------+--------+
+| Bolt  |     17 |
+| Screw |     17 |
+| Cog   |     19 |
++-------+--------+
+3 rows in set (0.00 sec)
+
+5. Display all the Part names starting with the letter ‘S’.
+Ans:5.
+Select distinct pname from p
+    -> where pname like ('S%');
++-------+
+| pname |
++-------+
+| Screw |
++-------+
+1 row in set (0.00 sec)
+
+6. Display all the Suppliers, belonging to cities starting with the letter ‘L’.
+Ans:6.
+ Select sname from s
+    -> where city like ('L%');
++-------+
+| sname |
++-------+
+| Smith |
+| Clark |
++-------+
+2 rows in set (0.00 sec)
+
+7. Display all the Projects, with the third letter in JNAME as ‘n’.
+Ans:7.
+Select Jname from j
+    -> where Jname like ('__n%');
++---------+
+| Jname   |
++---------+
+| Console |
++---------+
+1 row in set (0.00 sec)
+

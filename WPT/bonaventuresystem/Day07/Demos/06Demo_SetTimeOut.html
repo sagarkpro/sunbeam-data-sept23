@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      DoSomething();
+
+      function DoSomething() {
+        debugger;
+        console.log("Hi");
+        var output = window.setTimeout(Print, 5000);
+        console.log("output received from window.setTimeout = " + output);
+        console.log("Bye");
+      }
+
+      function Print() {
+        console.log("Sunbeam");
+      }
+    </script>
+  </body>
+</html>

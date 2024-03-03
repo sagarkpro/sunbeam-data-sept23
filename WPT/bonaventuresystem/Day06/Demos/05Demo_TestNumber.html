@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test Numbers</title>
+  </head>
+  <body>
+    Age: <input type="text" id="txtAge" />
+    <br />
+    <input type="button" value="Click Me" onclick="DoSomething()" />
+    <div
+      id="errorDiv"
+      style="background-color: beige; width: 300px; color: red"
+    ></div>
+    <script>
+      function DoSomething() {
+        debugger;
+        var refToTxtAge = document.getElementById("txtAge");
+        var refToErrorDiv = document.getElementById("errorDiv");
+
+        if (isNaN(refToTxtAge.value)) {
+          //When its character
+          refToErrorDiv.innerText = "Age must be a number!";
+        } else {
+          //When its Number
+          refToErrorDiv.innerText = "";
+          console.log("You Entered Age As: " + refToTxtAge.value);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test Validations</title>
+  </head>
+  <body>
+    <br /><br /><br />
+    <center>
+      <table style="width: 400px">
+        <tr>
+          <td style="width: 50px">Name:</td>
+          <td>
+            <input type="text" id="txtName" />
+          </td>
+          <td style="width: 350px">
+            <div style="color: red" id="divForNameRelatedError"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>Age:</td>
+          <td><input type="text" id="txtAge"//></td>
+          <td style="width: 350px">
+            <div style="color: red" id="divForAgeRelatedError"></div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="button" value="Submit" onclick="DoValidate()" />
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </center>
+    <!-- <script src="Validations.js"></script> -->
+    <script src="Validations.min.js"></script>
+    <script>
+      function DoValidate() {
+        debugger;
+        ValidateForEmpty(
+          "txtName",
+          "divForNameRelatedError",
+          "Name is required."
+        );
+        ValidateForEmpty("txtAge", "divForAgeRelatedError", "Age is required.");
+      }
+    </script>
+  </body>
+</html>

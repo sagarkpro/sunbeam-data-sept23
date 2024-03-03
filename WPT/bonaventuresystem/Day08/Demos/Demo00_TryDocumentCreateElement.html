@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="Add New Element" onclick="Add()" />
+    <div
+      style="
+        height: 300px;
+        width: 400px;
+        background-color: greenyellow;
+        padding: 20px;
+        margin: 100px;
+      "
+      id="myDiv"
+    >
+      <!-- <input type="text" id="txtName" value="Sunbeam" /> -->
+      <input type="date" />
+    </div>
+
+    <script>
+      function Add() {
+        var data = "abcd";
+        var refToMyDiv = document.getElementById("myDiv");
+        refToMyDiv.innerHTML =
+          refToMyDiv.innerHTML +
+          '<input type="text" id="txtName" value="' +
+          data +
+          '" />';
+
+        // var inputTagObject = document.createElement("INPUT");
+        // inputTagObject.type = "text";
+        // inputTagObject.id = "txtName";
+        // inputTagObject.value = "Sunbeam";
+
+        // refToMyDiv.append(inputTagObject);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      Book Details To Search: <input type="text" id="txtBook" />
+      <input type="button" value="Search" onclick="DoSearch()" />
+      <hr />
+      <table style="width: 400px" border="1" id="myBookTable"></table>
+    </center>
+
+    <script>
+      function DoSearch() {
+        var refToTxtBook = document.getElementById("txtBook");
+        var refToMyBookTable = document.getElementById("myBookTable");
+
+        var bookDetailsToSearch = refToTxtBook.value;
+
+        var url =
+          "https://www.googleapis.com/books/v1/volumes?q=" +
+          bookDetailsToSearch;
+
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var dataFromServer = helper.responseText;
+            var books = JSON.parse(dataFromServer);
+
+            refToMyBookTable.innerHTML = "";
+
+            for (i = 0; i < books.items.length; i++) {
+              var book = books.items[i];
+              var row = `<tr>
+                            <td>${book.volumeInfo.title}</td>
+                            <td>${book.volumeInfo.authors}</td>
+                            <td>
+                                <img height="100px" width="100px"
+                                    src="${book.volumeInfo.imageLinks.thumbnail}"/>    
+                            </td>
+                        </tr>`;
+              refToMyBookTable.innerHTML = refToMyBookTable.innerHTML + row;
+              debugger;
+            }
+            debugger;
+          }
+        };
+        helper.open("GET", url);
+        helper.send();
+      }
+    </script>
+  </body>
+</html>

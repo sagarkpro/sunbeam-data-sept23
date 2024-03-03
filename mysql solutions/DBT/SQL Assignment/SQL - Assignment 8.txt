@@ -1,0 +1,63 @@
+#########   SQL ASSIGNMENT 8 ##########
+
+1) Assume each salesperson has a 12% commission. Write a query on the orders table that will produce the order number, the salesperson number, and the amount of the salesperson’s commission for that order.
+Ans1:
+      select Onum,Snum,Amt*1.12-Amt "SALESPERSON COMMISION" from orders;
++------+------+-----------------------+
+| Onum | Snum | SALESPERSON COMMISION |
++------+------+-----------------------+
+| 3001 | 1007 |                  2.24 |
+| 3003 | 1001 |                 92.06 |
+| 3002 | 1004 |                228.01 |
+| 3005 | 1002 |                619.25 |
+| 3006 | 1007 |                131.78 |
+| 3009 | 1003 |                205.59 |
+| 3007 | 1002 |                  9.09 |
+| 3008 | 1001 |                566.76 |
+| 3010 | 1002 |                157.19 |
+| 3011 | 1001 |               1187.03 |
++------+------+-----------------------+
+
+Write a query on the Customers table that will find the highest rating in each city. Put the output in this form:
+For the city (city), the highest rating is : (rating).
+Ans2: Select City "For the City" , max(rating) "the highest rating is :"
+    -> from customers
+    -> group by city;
++--------------+-------------------------+
+| For the City | the highest rating is : |
++--------------+-------------------------+
+| London       |                     100 |
+| Rome         |                     200 |
+| San Jose     |                     300 |
+| Berlin       |                     300 |
++--------------+-------------------------+
+
+3) Write a query that lists customers in descending order of rating. Output the rating field first, followed by the customer’s name and number.
+Ans3: Select Rating,Cname,Cnum
+    ->       From customers
+    ->       order by rating;
++--------+----------+------+
+| Rating | Cname    | Cnum |
++--------+----------+------+
+|    100 | Hoffman  | 2001 |
+|    100 | Clemens  | 2006 |
+|    100 | Pereira  | 2007 |
+|    200 | Giovanni | 2002 |
+|    200 | Liu      | 2003 |
+|    300 | Grass    | 2004 |
+|    300 | Cisneros | 2008 |
++--------+----------+------+
+
+4) Write a query that totals the orders for each day and places the results in descending order.
+Ans4: select odate,count(onum)
+    -> from orders
+    -> group by odate
+    -> order by count(onum) DESC;
++------------+-------------+
+| odate      | count(onum) |
++------------+-------------+
+| 1990-10-03 |           5 |
+| 1990-10-04 |           2 |
+| 1990-10-06 |           2 |
+| 1990-10-05 |           1 |
++------------+-------------+

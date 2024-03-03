@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function CreateServer(f1) {
+        //Keep on checking if the request arrived.
+        //if arrived then
+        //open http packet
+        //find details inside it.
+        //prepare request, response obejcts
+        //call a function passed by developer as
+        //parameter
+        var request = {};
+        var response = {};
+        f1(request, response);
+      }
+
+      CreateServer((request, response) => {
+        //handle the request
+        if (request.url == "/emps") {
+          response.write("");
+          response.end();
+        }
+      });
+    </script>
+  </body>
+</html>

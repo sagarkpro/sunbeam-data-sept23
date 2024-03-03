@@ -1,0 +1,75 @@
+SQL Assignment – 9
+
+1) Write a query that lists each order number followed by the name of the customer who made the order.
+1.select onum,cname from orders,customers
+    -> where orders.cnum=customers.cnum;
++------+----------+
+| onum | cname    |
++------+----------+
+| 3001 | Cisneros |
+| 3003 | Hoffman  |
+| 3002 | Pereira  |
+| 3005 | Liu      |
+| 3006 | Cisneros |
+| 3009 | Giovanni |
+| 3007 | Grass    |
+| 3008 | Clemens  |
+| 3010 | Grass    |
+| 3011 | Clemens  |
++------+----------+
+
+2) Write a query that gives the names of both the salesperson and the customer for each order along with the order number.
+2. select sname,cname,onum
+    -> From orders,customers,salespeople
+    -> where orders.snum=customers.snum And orders.snum=salespeople.snum;
++---------+----------+------+
+| sname   | cname    | onum |
++---------+----------+------+
+| Rifkin  | Cisneros | 3001 |
+| Peel    | Clemens  | 3003 |
+| Peel    | Hoffman  | 3003 |
+| Motika  | Pereira  | 3002 |
+| Serres  | Grass    | 3005 |
+| Serres  | Liu      | 3005 |
+| Rifkin  | Cisneros | 3006 |
+| Axelrod | Giovanni | 3009 |
+| Serres  | Grass    | 3007 |
+| Serres  | Liu      | 3007 |
+| Peel    | Clemens  | 3008 |
+| Peel    | Hoffman  | 3008 |
+| Serres  | Grass    | 3010 |
+| Serres  | Liu      | 3010 |
+| Peel    | Clemens  | 3011 |
+| Peel    | Hoffman  | 3011 |
++---------+----------+------+
+
+3) Write a query that produces all customers serviced by salespeople with a commission above 12%. Output the customer’s name, the salesperson’s name, and the salesperson’s rate of commission.
+3.select Cname,salespeople.snum,comm*100 "Rate Of Commision" From customers,salespeople
+    -> where customers.snum=salespeople.snum and comm>0.12;
++----------+------+-------------------+
+| Cname    | snum | Rate Of Commision |
++----------+------+-------------------+
+| Liu      | 1002 |             13.00 |
+| Grass    | 1002 |             13.00 |
+| Cisneros | 1007 |             15.00 |
++----------+------+-------------------+
+
+4) Write a query that calculates the amount of the salesperson’s commission on each order by a customer with a rating above 100.
+4.
+Select Onum,Orders.Snum,Amt*comm,Comm,Rating From Customers,orders,salespeople
+    -> where orders.snum=customers.snum And orders.snum=salespeople.snum
+    -> Having rating>100
+    -> Order BY Orders.Snum;
++------+------+----------+------+--------+
+| Onum | Snum | Amt*comm | Comm | Rating |
++------+------+----------+------+--------+
+| 3010 | 1002 |   170.29 | 0.13 |    200 |
+| 3007 | 1002 |     9.85 | 0.13 |    200 |
+| 3005 | 1002 |   670.86 | 0.13 |    200 |
+| 3010 | 1002 |   170.29 | 0.13 |    300 |
+| 3007 | 1002 |     9.85 | 0.13 |    300 |
+| 3005 | 1002 |   670.86 | 0.13 |    300 |
+| 3009 | 1003 |   171.32 | 0.10 |    200 |
+| 3006 | 1007 |   164.72 | 0.15 |    300 |
+| 3001 | 1007 |     2.80 | 0.15 |    300 |
++------+------+----------+------+--------+

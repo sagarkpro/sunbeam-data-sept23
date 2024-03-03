@@ -1,0 +1,14 @@
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\bin\Debug\net6.0\CallAssemblyUsingReflection.exe
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\bin\Debug\net6.0\CallAssemblyUsingReflection.deps.json
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\bin\Debug\net6.0\CallAssemblyUsingReflection.runtimeconfig.json
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\bin\Debug\net6.0\CallAssemblyUsingReflection.dll
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\bin\Debug\net6.0\CallAssemblyUsingReflection.pdb
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.GeneratedMSBuildEditorConfig.editorconfig
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.AssemblyInfoInputs.cache
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.AssemblyInfo.cs
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.csproj.CoreCompileInputs.cache
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.dll
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\refint\CallAssemblyUsingReflection.dll
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.pdb
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\CallAssemblyUsingReflection.genruntimeconfig.cache
+D:\Coding\SB DATA\gitdata\Dot NET\bonaventuresystem\Day07\Demos\CallAssemblyUsingReflection\obj\Debug\net6.0\ref\CallAssemblyUsingReflection.dll

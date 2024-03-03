@@ -1,0 +1,70 @@
+MySQL-PL Exercise 3
+
+Q1:Write a program containing a loop that iterates from 1 to 1000 using a variable I, 
+which is incremented each time around the loop. 
+The program should output the value of I every hundred iterations 
+(i.e., the output should be 100, 200, etc.).
+
+Ans:
+delimiter //
+create procedure abc()
+begin
+declare i int default 1;
+while i<=1000 do
+if mod(i,100)=0 then
+insert into tempp values(i,'done');
+end if;
+set i=i+1;
+end while ;
+end //
+delimiter ;
+
+
+Q2:Write a program that Selects from any table a minimum and maximum value for a radius, along with an increment factor, 
+and generates a series of radii by repeatedly adding the increment to the minimum until the maximum is reached.
+For each value of the radius, compute and display the circumference, area,
+and volume of the sphere. (Be sure to include both the maximum and the minimum values.).
+
+Ans:
+create table showw(radius int,cirumference float,area float,volume float);
+
+delimiter //
+create procedure cir()
+begin
+declare x1,x2,i int;
+declare circ,area,vol float;
+select min,max into x1,x2 from radius where sr=1;
+while (i+x1)<x2 do
+set x1=i+x1;
+set circ=6.28*x1;
+set area=12.566*x1*x1;
+set vol=(12.566*x1*x1*x1)/3;
+insert into showw values(x1,circ,area,vol);
+set i=i+1;
+end while;
+end //
+delimiter ;
+
+call cir();
+
+Q3:A palindrome is a word that is spelled the same forward and backward, 
+such as level, radar, etc. Write a program to Selects from any table a
+five letter word and determine whether it is a palindrome.
+
+Ans:
+delimiter //
+create procedure abc()
+begin
+declare x varchar(50);
+declare y varchar(50);
+select name into x from palin where sr=3;
+set y= reverse(x);
+if x=y then
+insert into tempp values(0,'Palin');
+else
+insert into tempp values(1,' Not Palin');
+end if;
+end //
+delimiter ;
+
+

@@ -1,0 +1,9 @@
+#########   SQL ASSIGNMENT 3 ##########
+
+Q1: Does ANSI recognize the data type DATE?
+Ans: Yes, ANSI recognize the data type DATE in the format 'YYYY-MM-DD' .
+
+
+Q2: Which subdivison of SQL is used to insert values in tables?
+Ans: Data Manipulation Language i.e DML is the subdiviosn of SQL and INSERT is the statement 
+     used to insert values in tables.

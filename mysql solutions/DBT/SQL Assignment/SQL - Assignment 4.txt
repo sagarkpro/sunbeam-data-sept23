@@ -1,0 +1,21 @@
+#########   SQL ASSIGNMENT 4 ##########
+
+Q1: Write a select command that produces the order number,amount, and date for all rows in the Orders table.
+Ans: SELECT Onum,Amt,Odate FROM ORDERS;
+
+Q2: Write a query that produces all rows from the Customers tables for which the salesperson's number is 1001.
+Ans: SELECT * FROM CUSTOMERS
+     WHERE Snum=1001;
+
+Q3: Write a query that displays the Salespeople table with the columns in the following order: city,sname,snum,comm.
+Ans:SELECT City,Sname,Snum,Comm FROM SALESPEOPLE; 
+
+Q4: Write a select command the produces the rating followed by the name of each customer in San Jose.
+Ans: SELECT Rating,Cname FROM CUSTOMERS
+     where City='San Jose';
+
+     OR
+      
+    SELECT Rating,Cname FROM CUSTOMERS
+     where City IN ('San Jose');
+ 

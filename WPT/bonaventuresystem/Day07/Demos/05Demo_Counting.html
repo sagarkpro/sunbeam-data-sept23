@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="Start Counting" onclick="KeepCounting()" />
+    <input type="button" value="Show Alert" onclick="ShowAlert()" />
+
+    <div id="myDiv" style="background-color: greenyellow"></div>
+    <script>
+      var counter = 0;
+
+      function ShowAlert() {
+        window.alert("Something to disturb!");
+      }
+
+      function KeepCounting() {
+        //window.setTimeout(IncreaseCount, 5000);
+        IncreaseCount();
+      }
+
+      function IncreaseCount() {
+        counter = counter + 1;
+        var refTomyDiv = document.getElementById("myDiv");
+        refTomyDiv.innerText = counter;
+        window.setTimeout(IncreaseCount, 1000);
+      }
+    </script>
+  </body>
+</html>

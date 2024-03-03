@@ -1,0 +1,16 @@
+.MyStyle {
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}
+.YourStyle {
+    height: 200px;
+    width: 200px;
+    background-color: pink;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}

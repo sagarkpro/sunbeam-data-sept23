@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    Name: <input id="txtName" value="Sunbeam" />
+    <br />
+    <input type="button" value="Click Me" id="btn" />
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+      function Execute() {
+        console.log("Hi" + jQuery("#txtName").val());
+      }
+
+      jQuery("#btn").click(Execute);
+    </script>
+  </body>
+</html>

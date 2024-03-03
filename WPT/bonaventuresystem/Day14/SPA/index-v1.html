@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sunbeam</title>
+  </head>
+  <body onload="LoadUI('home')">
+    <img src="logo.jpg" style="height: 100px; width: 100px" />
+    <br />
+    <hr />
+    <a onclick="LoadUI('home')">Home</a> |
+    <a onclick="LoadUI('about')">About Us</a> |
+    <a onclick="LoadUI('contact')">Contact Us</a> |
+    <hr />
+    <div id="root"></div>
+    <hr />
+    <center>
+      <h3>Made by Sunbeam. 2023</h3>
+    </center>
+    <script>
+      function LoadUI(pageName) {
+        var refToContainer = document.getElementById("root");
+        var content = "";
+        switch (pageName) {
+          case "home":
+            content = `<h1>Welcome Home</h1>`;
+            break;
+          case "about":
+            content = `<h1>About Us!</h1>`;
+            break;
+          case "contact":
+            content = `<h1>Contact Us Here!</h1>`;
+            break;
+          default:
+            content = `<h1>Not Found!</h1>`;
+        }
+
+        refToContainer.innerHTML = content;
+      }
+    </script>
+  </body>
+</html>

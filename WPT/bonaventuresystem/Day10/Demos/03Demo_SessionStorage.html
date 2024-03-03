@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <h1>First Page</h1>
+      <hr />
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" id="txtName" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Your Liking (comma separated): <br />
+            ex: books, mobiles etc
+          </td>
+          <td>
+            <input type="text" id="txtLiking" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input
+              type="button"
+              id="btnStore"
+              value="Store Details"
+              onclick="StoreDetails()"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a href="2nd.html">Go to next Page</a>
+          </td>
+        </tr>
+      </table>
+    </center>
+
+    <script>
+      function StoreDetails() {
+        var refToTxtName = document.getElementById("txtName");
+        var refToTxtLikings = document.getElementById("txtLiking");
+
+        // window.localStorage.setItem("Name", refToTxtName.value);
+        // window.localStorage.setItem("Liking", refToTxtLikings.value);
+
+        window.sessionStorage.setItem("Name", refToTxtName.value);
+        window.sessionStorage.setItem("Liking", refToTxtLikings.value);
+      }
+    </script>
+  </body>
+</html>

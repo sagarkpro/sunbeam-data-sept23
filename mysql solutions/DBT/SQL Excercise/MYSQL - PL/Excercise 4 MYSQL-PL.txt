@@ -1,0 +1,82 @@
+MySQL-PL Exercise 4
+
+Q1:Write a stored function to take three parameters, the sides of a triangle.
+The sides of the triangle should be accepted from the user. 
+The function should return a Boolean value:- true if the triangle is valid, false otherwise. 
+A triangle is valid if the length of each side is less than the sum of the lengths of the other two sides.
+Check if the dimensions entered can form a valid triangle.
+
+Ans:
+
+delimiter //
+create function three(x int,y int,z int)
+returns boolean
+deterministic
+begin
+    if (x+y)>z and (y+z)>x then
+    return TRUE;
+    else
+    return FALSE;
+    end if;
+end //
+delimiter ;
+
+delimiter //
+create procedure abc()
+begin
+if three(3,4,5) then
+insert into temp values(0,'Possible');
+else
+insert into temp values(1,'Not Possible');
+end if;
+end //
+delimiter;
+
+call abc();
+select * from temp;
++------+--------------------+
+| Val  | Triangle_Formation |
++------+--------------------+
+|    0 | Possible           |
++------+--------------------+
+1 row in set (0.00 sec)
+
+
+
+
+Q2:Write a function that generates a random number between 1 and 10. 
+Use any logic of your choice to achieve this.
+
+Ans:
+delimiter //
+create procedure abc()
+begin
+declare x int ;
+set x =rand()*10;
+insert into tempp values(x,'added');
+end //
+delimiter ;
+
+
+Q3:Create a function that accepts a string of n characters and exchanges the first character with the last,
+the second with the next – to – last, and so forth until n exchanges have been made.
+What will the final string look like? Write the function to verify your conclusion.
+
+Ans:
+delimiter //
+create function str(x varchar(25))
+returns varchar(25)
+deterministic
+begin
+return reverse(x);
+end //
+delimiter ;
+
+select str('vinit');
++--------------+
+| str('vinit') |
++--------------+
+| tiniv        |
++--------------+
+1 row in set (0.00 sec)
+

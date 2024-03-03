@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var p1 = { Name: "Mahesh", Address: "Pune" };
+      //   console.log("p1 has values as : " + p1.Name + p1.Address);
+
+      //   var p2 = p1; ///Here you are copying a reference!
+      //   p2.Name = "Nilesh";
+      //   console.log("p1 has values as : " + p1.Name + p1.Address);
+      //   console.log("p2 has values as : " + p2.Name + p2.Address);
+
+      //Copying Object using Spread Operator or Triple ... Syntax
+      //   var p1 = { Name: "Mahesh", Address: "Pune" };
+      //   console.log("p1 has values as : " + p1.Name + p1.Address);
+
+      //   var p2 = { ...p1 }; ///Here you are copying a reference!
+      //   p2.Name = "Nilesh";
+      //   console.log("p1 has values as : " + p1.Name + p1.Address);
+      //   console.log("p2 has values as : " + p2.Name + p2.Address);
+
+      var p1 = { Name: "Mahesh", Address: "Pune" };
+      console.log("p1 has values as : " + p1.Name + p1.Address);
+
+      var p2 = { ...p1, Name: "Nilesh" }; ///Here you are copying a reference!
+
+      debugger;
+      p2["Phone"] = 98989898;
+
+      console.log("p1 has values as : " + p1["Name"] + p1["Address"]);
+      console.log("p2 has values as : " + p2.Name + p2.Address);
+      console.log("P2 has Phone as " + p2.Phone);
+
+      delete p2.Phone;
+
+      console.log("P2 has Phone as " + p2.Phone);
+
+      //console.log(Object.keys(p1));
+
+      debugger;
+      var allMembersInp1 = Object.keys(p1);
+
+      for (i = 0; i < allMembersInp1.length; i++) {
+        console.log("Key is " + allMembersInp1[i]);
+        var key = allMembersInp1[i];
+
+        console.log("Value is " + p1[key]);
+      }
+    </script>
+  </body>
+</html>

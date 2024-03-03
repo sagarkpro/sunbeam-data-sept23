@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test Validations</title>
+  </head>
+  <body>
+    <br /><br /><br />
+    <center>
+      <table style="width: 400px">
+        <tr>
+          <td style="width: 50px">Name:</td>
+          <td>
+            <input type="text" id="txtName" />
+          </td>
+          <td style="width: 350px">
+            <div style="color: red" id="divForNameRelatedError"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>Age:</td>
+          <td><input type="text" id="txtAge"//></td>
+          <td style="width: 350px">
+            <div style="color: red" id="divForAgeRelatedError"></div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input type="button" value="Submit" onclick="DoValidate()" />
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </center>
+    <script>
+      function ValidateNameForEmpty() {
+        var refOfTxtName = document.getElementById("txtName");
+
+        var refOfErrorDivForName = document.getElementById(
+          "divForNameRelatedError"
+        );
+
+        var errorMessage = "Name is required";
+
+        if (refOfTxtName.value == "") {
+          refOfErrorDivForName.innerText = errorMessage;
+        } else {
+          refOfErrorDivForName.innerText = "";
+          console.log(refOfTxtName.value);
+        }
+      }
+
+      function ValidateAgeForEmpty() {
+        var refOfTxtAge = document.getElementById("txtAge");
+
+        var refOfErrorDivForAge = document.getElementById(
+          "divForAgeRelatedError"
+        );
+
+        var errorMessage = "Age is required";
+
+        if (refOfTxtAge.value == "") {
+          refOfErrorDivForAge.innerText = errorMessage;
+        } else {
+          refOfErrorDivForAge.innerText = "";
+          console.log(refOfTxtAge.value);
+        }
+      }
+
+      function DoValidate() {
+        debugger;
+        ValidateNameForEmpty();
+        ValidateAgeForEmpty();
+      }
+    </script>
+  </body>
+</html>

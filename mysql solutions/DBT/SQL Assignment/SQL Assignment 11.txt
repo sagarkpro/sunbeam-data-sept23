@@ -1,0 +1,52 @@
+SQL Assignment – 1
+
+1) Write a query that uses a subquery to obtain all orders for the customer named Cisneros. Assume you do not know his customer number (cnum).
+1.
+Select Onum from orders,customers
+     where Orders.Cnum=Customers.Cnum and
+     Customers.Cnum=(Select Cnum from customers where cname='Cisneros');
++------+
+| Onum |
++------+
+| 3001 |
+| 3006 |
++------+
+2 rows in set (0.00 sec)
+OR
+
+ SELECT onum "ALL ORDERS",
+            cnum
+     FROM orders
+     WHERE cnum=
+         (SELECT cnum
+          FROM customers
+          WHERE cname='cisneros');
++------------+------+
+| ALL ORDERS | cnum |
++------------+------+
+|       3001 | 2008 |
+|       3006 | 2008 |
++------------+------+
+2 rows in set (0.00 sec)
+
+2) Write a query that produces the names and ratings of all customers who have above-average orders.
+2.
+
+SELECT cname,
+            rating
+     FROM customers
+     WHERE cnum IN
+         (SELECT cnum
+          FROM orders
+          WHERE amt >
+              (SELECT avg(amt)
+               FROM orders));
++---------+--------+
+| cname   | rating |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.00 sec)
+
+

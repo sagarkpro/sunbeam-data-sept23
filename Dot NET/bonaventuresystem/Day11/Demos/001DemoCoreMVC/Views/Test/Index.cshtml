@@ -1,0 +1,17 @@
+﻿<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+        
+        <h1>Welcome @Model.Name</h1>
+         <hr />
+   @*  <h2>Message is @ViewData["MyMessage"].ToString()</h2>
+    <h2>AnotherMessage is @ViewData["AnotherMessage"].ToString()</h2> *@
+
+    <h2>Message is @ViewBag.MyMessage</h2>
+    <h2>Another Message is @ViewBag.AnotherMessage</h2>
+    <hr />
+    <h1>Book details are : ISBN is  @ViewBag.mybook.ISBN . Title is @ViewBag.mybook.Title </h1>
+</body>
+</html>

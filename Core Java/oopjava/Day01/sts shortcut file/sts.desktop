@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=sts
+Comment=Spring Tool Suite
+Icon=/home/sunbeam/Sunbeam/Softwares/spring-tool-suite-3.9.18/sts-bundle/sts-3.9.18.RELEASE/icon.xpm
+Exec=/home/sunbeam/Sunbeam/Softwares/spring-tool-suite-3.9.18/sts-bundle/sts-3.9.18.RELEASE/STS
+Terminal=false
+Categories=Development;IDE;Java;
+StartupWMClass=STS

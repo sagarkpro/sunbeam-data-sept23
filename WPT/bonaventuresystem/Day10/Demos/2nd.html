@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <center>
+      <h1>Second Page</h1>
+      <a href="03Demo_SessionStorage.html">Go back to first Page</a>  
+      <hr />
+      <div style="font-weight: bolder;color: red;" id="divMessage">
+        
+      </div>
+
+      <hr />
+      <div style="font-weight: bolder;color: red;" id="divLiking">
+        
+      </div>
+      <script>
+        // var userName  = window.localStorage.getItem("Name");
+        // var userLiking  = window.localStorage.getItem("Liking");
+
+         var userName  = window.sessionStorage.getItem("Name");
+        var userLiking  = window.sessionStorage.getItem("Liking");
+
+        var refTodivMessage = document.getElementById("divMessage");
+        var refTodivLiking = document.getElementById("divLiking");
+        
+        refTodivMessage.innerText = "Hello " + userName;
+        refTodivLiking.innerText = "Your Likings " + userLiking;
+      </script>   
+</body>
+</html>

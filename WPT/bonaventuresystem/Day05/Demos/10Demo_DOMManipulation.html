@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Test DOM</title>
+  </head>
+  <body>
+    <input type="button" value="Move Right" onclick="MoveRight()" />
+    <div
+      id="MyDiv"
+      style="height: 200px; width: 200px; background-color: yellow"
+      onmouseover="DoSomething()"
+      onmouseout="DoSomethingElse()"
+    >
+      Test
+    </div>
+    <script>
+      var leftMargin = 0;
+
+      function MoveRight() {
+        var refToMyDiv = document.getElementById("MyDiv");
+        leftMargin = leftMargin + 10;
+        refToMyDiv.style.marginLeft = leftMargin + "px";
+      }
+
+      function DoSomething() {
+        var refToMyDiv = document.getElementById("MyDiv");
+        refToMyDiv.style.backgroundColor = "Red";
+      }
+
+      function DoSomethingElse() {
+        var refToMyDiv = document.getElementById("MyDiv");
+        refToMyDiv.style.backgroundColor = "Yellow";
+      }
+    </script>
+  </body>
+</html>

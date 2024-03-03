@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Test</title>
+    <!-- <script>
+      function ExecuteMe() {
+        debugger;
+        var refTotxtName = document.getElementById("txtName");
+        var dataFromTextBox = refTotxtName.value;
+        console.log("Hello " + dataFromTextBox);
+      }
+    </script> -->
+  </head>
+  <body>
+    <input type="text" id="txtName" value="Sunbeam" />
+    <input type="button" value="Click Me" onclick="ExecuteMe()" />
+    <input type="button" value="Click Me Too" onclick="ExecuteMeToo()" />
+    <script>
+      function ExecuteMe() {
+        //debugger;
+        var refTotxtName = document.getElementById("txtName");
+        var dataFromTextBox = refTotxtName.value;
+        console.log("Hello " + dataFromTextBox);
+      }
+
+      function ExecuteMeToo() {
+        //debugger;
+        var refTotxtName = document.getElementById("txtName");
+        refTotxtName.value = "XYZ";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <input
+        type="button"
+        value="Get Data From Server Side"
+        onclick="GetData()"
+      />
+      <hr />
+      <table id="myTable" style="width: 400px" border="1"></table>
+    </center>
+    <script>
+      function GetData() {
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var dataInStringFormat = helper.responseText;
+            var players = JSON.parse(dataInStringFormat);
+
+            var refToMyTable = document.getElementById("myTable");
+            refToMyTable.innerHTML = "";
+
+            for (i = 0; i < players.length; i++) {
+              var player = players[i];
+
+              refToMyTable.innerHTML =
+                refToMyTable.innerHTML +
+                `<tr>
+                  <td>${player.No}</td>
+                  <td>${player.Name}</td>
+                  <td>${player.Age}</td>
+                </tr>`;
+            }
+          }
+        };
+
+        helper.open("GET", "http://127.0.0.1:5500/playersdata.json");
+        helper.send();
+      }
+    </script>
+  </body>
+</html>

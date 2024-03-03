@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="Click Me" onclick="DoChange()" />
+    <div
+      style="background-color: red; display: flex; flex-direction: row"
+      id="MyContainer"
+    >
+      <div style="height: 200px; width: 200px; background-color: yellow">
+        DIV 1
+      </div>
+
+      <div style="height: 200px; width: 200px; background-color: yellowgreen">
+        DIV 2
+      </div>
+
+      <div style="height: 200px; width: 200px; background-color: green">
+        DIV 3
+      </div>
+    </div>
+
+    <script>
+      function DoChange() {
+        var refToMyContainer = document.getElementById("MyContainer");
+        refToMyContainer.style.flexDirection = "column";
+      }
+    </script>
+  </body>
+</html>

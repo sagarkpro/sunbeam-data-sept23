@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+      .A {
+        background-color: yellow;
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+      }
+
+      .B {
+        background-color: skyblue;
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <input type="button" id="btn" value="Click Me" />
+      <div class="A" id="div1" title="nagpur">1</div>
+      <br />
+      <div class="B" id="div2" title="mumbai">2</div>
+      <br />
+      <div class="A" id="div3" title="pune">3</div>
+      <br />
+      <div class="B" id="div4" title="panji">4</div>
+      <br />
+      <section class="A" id="section1">111</section>
+      <br />
+    </center>
+    <script>
+      $("#btn").click(function () {
+        // $("#div1").css("background-color", "red");
+        // $("#div1").css("width", "200px");
+        // $("#div1").css({
+        //   "background-color": "red",
+        //   width: "200px",
+        // });
+        // $("div").css("background-color", "red");
+        // $(".A").css("background-color", "red");
+        // $("div.A").css("background-color", "red");
+
+        // $("div[title='panji']").css("background-color", "red");
+
+        // $("div[title^='p']").css("background-color", "red");
+
+        // $("div[title$='i']").css("background-color", "red");
+
+        // $("div[title*='n']").css("background-color", "red");
+
+        $("div[title*='n']")
+          .filter("div[title*='a']")
+          .css("background-color", "red");
+      });
+    </script>
+  </body>
+</html>

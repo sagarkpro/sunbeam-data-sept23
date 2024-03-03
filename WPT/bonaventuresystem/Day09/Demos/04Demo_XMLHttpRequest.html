@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      value="Get Data From Server Side"
+      onclick="GetData()"
+    />
+    <script>
+      function GetData() {
+        //debugger;
+        var helper = new XMLHttpRequest(); //helper.readyState = 0
+        helper.onreadystatechange = () => {
+          console.log("Current State = " + helper.readyState);
+          if (helper.readyState == 4 && helper.status == 200) {
+            //debugger;
+            var dataInStringFormat = helper.responseText;
+            var players = JSON.parse(dataInStringFormat);
+
+            for (i = 0; i < players.length; i++) {
+              var player = players[i];
+              console.log(
+                `No = ${player.No}, Name = ${player.Name}, Age = ${player.Age}`
+              );
+              for (j = 0; j < player.Expertise.length; j++) {
+                console.log(` --- ${player.Expertise[j]}`);
+              }
+            }
+          }
+        };
+
+        helper.open("GET", "http://127.0.0.1:5500/playersdata.json");
+        //Open means prepare a http request packet
+        //At Open Method Call; helper.readyState becomes 1
+
+        helper.send(); //Here we are sending the packet.
+        //readyState becomes 2
+
+        //readState becomes 3 - it means we are waiting for reply
+      }
+    </script>
+  </body>
+</html>

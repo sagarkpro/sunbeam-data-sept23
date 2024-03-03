@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    Name: <input id="txtName" value="" />
+    <br />
+    <input type="button" value="Click Me" id="btn" />
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+      $("#btn").click(function () {
+        console.log("Hi" + $("#txtName").val());
+      });
+    </script>
+  </body>
+</html>

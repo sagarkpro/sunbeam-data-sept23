@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function DoSomething(f1, f2) {
+        if (10 > 2) {
+          f1();
+        } else {
+          f2();
+        }
+      }
+
+      function OnSuccess() {
+        console.log("TRUE");
+      }
+
+      function OnFailure() {
+        console.log("FALSE");
+      }
+
+      //   DoSomething(OnSuccess, OnFailure);
+      //DoSomething(P, Q);
+
+      DoSomething(
+        () => {
+          console.log("TRUE1234");
+        },
+        () => {
+          console.log("FALSE1234");
+        }
+      );
+    </script>
+  </body>
+</html>

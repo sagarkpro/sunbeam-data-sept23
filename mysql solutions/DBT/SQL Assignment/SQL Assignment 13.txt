@@ -1,0 +1,70 @@
+SQL Assignment – 13
+
+1) Create a union of two queries that shows the names, cities, and ratings of all customers. 
+Those with rating of 200 or greater will also have the words “High Rating”, while the others will have the words “Low Rating”.
+Ans:
+SELECT CNAME,CITY, 'HIGHER RATING' RATING FROM CUSTOMERS
+    -> WHERE rating>=200
+    -> UNION
+    -> SELECT CNAME,CITY,'LOWER RATING' RATING FROM CUSTOMERS
+    -> WHERE rating <200;
++----------+----------+---------------+
+| CNAME    | CITY     | RATING        |
++----------+----------+---------------+
+| Giovanni | Rome     | HIGHER RATING |
+| Liu      | San Jose | HIGHER RATING |
+| Grass    | Berlin   | HIGHER RATING |
+| Cisneros | San Jose | HIGHER RATING |
+| Hoffman  | London   | LOWER RATING  |
+| Clemens  | London   | LOWER RATING  |
+| Pereira  | Rome     | LOWER RATING  |
++----------+----------+---------------+
+7 rows in set (0.00 sec)
+
+2) Write a command that produces the name and number of each salesperson and each customer with more than one current order.
+ Put the results in alphabetical order.
+Ans:
+Select sname,snum,cname From salespeople
+Join customers using(snum) WHERE snum IN
+(Select snum From customers
+ Group by snum
+ Having count(snum)>1)
+ Order by sname,cname;
++--------+------+---------+
+| sname  | snum | cname   |
++--------+------+---------+
+| Motika | 1004 | Grass   |
+| Motika | 1004 | Liu     |
+| Motika | 1004 | Pereira |
+| Peel   | 1001 | Clemens |
+| Peel   | 1001 | Hoffman |
++--------+------+---------+
+5 rows in set (0.00 sec)
+
+3) Form a union of three queries. Have the first select the snums of all salespeople in San Jose; 
+the second, the cnums of all customers in San Jose; and the third the onums of all orders on October 3.
+ Retain duplicates between the last two queries but eliminate any redundancies between either of them and the first.
+(Note: in the sample tables as given, there would be no such redundancy. This is besides the point.)
+Ans:
+SELECT snum "Query"
+FROM salespeople
+WHERE city='san jose'
+UNION
+SELECT cnum
+FROM customers
+WHERE city='san jose'
+UNION
+Select onum from orders
+where onum IN(Select onum from orders where odate like '03-OCT-%');
+
++-------+
+| Query |
++-------+
+|  1002 |
+|  1100 |
+|  2003 |
+|  2008 |
++-------+
+4 rows in set (0.00 sec)
+
+

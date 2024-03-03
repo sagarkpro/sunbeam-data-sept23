@@ -1,0 +1,60 @@
+MySQL-PL Exercise 2
+
+
+Q1:Select from any table a number and determine whether it is within a given range (for example, between 1 and 10).
+Ans:
+delimiter //
+create procedure abc()
+begin
+declare x int;
+select side1 into x from tri where sr=4;
+if 1<x<10 then
+insert into tempp values(x,'in');
+else
+insert into tempp values(x,'not in');
+end if;
+end //
+
+Q2:Select from any table three positive integers representing the sides of a triangle, and determine whether they form a valid triangle.
+   Hint: In a triangle, the sum of any two sides must always be greater than the third side.
+Ans: 
+delimiter //
+create procedure abc()
+begin
+declare x int;
+declare y int;
+declare z int;
+declare a1 int;
+declare a2 int;
+select side1,side2,side3 into x,y,z from tri where sr=4;
+set a1=x+y;
+set a2=y+z;
+if a1>z and a2>x then
+insert into tempp values(0,'Possible');
+else
+insert into tempp values(1,'NOt Possible');
+end if;
+end //
+
+
+Q3:Check if a given a year is a leap year. The condition is:- year should be (divisible by 4 and not divisible by 100)
+or (divisible by 4 and divisible by 400.). The year should be Selected from some table.
+Ans: 
+delimiter //
+create procedure abc()
+begin
+declare x int;
+select yearr into x from year where sr=4;
+if (mod(x,4)=0 and mod(x,100)!=0) or (mod(x,4)=0 and mod(x,400)=0) then
+insert into tempp values(x,'Leap Year');
+else
+insert into tempp values(x,' Not a Leap Year');
+end if;
+end //
+
+
+
+
+
+
+

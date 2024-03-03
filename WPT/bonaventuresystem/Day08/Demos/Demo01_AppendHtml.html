@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <table>
+        <tr>
+          <td>No</td>
+          <td><input type="text" id="txtNo" /></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td><input type="text" id="txtName" /></td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td><input type="text" id="txtAddress" /></td>
+        </tr>
+        <tr>
+          <td>EMail</td>
+          <td><input type="text" id="txtEMail" /></td>
+        </tr>
+      </table>
+
+      <input type="button" value="Add Rows" onclick="Add()" />
+      <br /><br /><br />
+      <table style="width: 400px" border="1" id="myTable"></table>
+    </center>
+    <script>
+      function Add() {
+        var refToMyTable = document.getElementById("myTable");
+
+        var refToTxtNo = document.getElementById("txtNo");
+        var refToTxtName = document.getElementById("txtName");
+        var refToTxtAddress = document.getElementById("txtAddress");
+        var refToTxtEMail = document.getElementById("txtEMail");
+
+        refToMyTable.innerHTML =
+          refToMyTable.innerHTML +
+          `<tr>` +
+          `<td>` +
+          refToTxtNo.value +
+          `</td>` +
+          `<td>` +
+          refToTxtName.value +
+          `</td>` +
+          `<td>` +
+          refToTxtAddress.value +
+          `</td>` +
+          `<td>` +
+          refToTxtEMail.value +
+          `</td>` +
+          `</tr>`;
+      }
+    </script>
+  </body>
+</html>

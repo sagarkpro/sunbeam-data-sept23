@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function GetData(resolve, reject) {
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var users = JSON.parse(helper.responseText);
+            resolve(users.data);
+          }
+        };
+        helper.open("GET", "https://reqres.in/api/users");
+        helper.send();
+      }
+
+      var promise = new Promise(GetData);
+
+      promise.then((data) => {
+        console.log(data);
+      });
+    </script>
+  </body>
+</html>

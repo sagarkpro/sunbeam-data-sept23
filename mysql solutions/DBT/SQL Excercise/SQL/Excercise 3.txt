@@ -1,0 +1,139 @@
+SQL Exercise 3
+
+1. Display all the Supplier names with the initial letter capital.
+Ans1:
+ SELECT CONCAT(UPPER(SUBSTR(SNAME,1,1)),LOWER(SUBSTR(SNAME,2))) NAMES FROM S;
++-------+
+| NAMES |
++-------+
+| Smith |
+| Jones |
+| Blake |
+| Clark |
+| Adams |
++-------+
+5 rows in set (0.00 sec)
+
+2. Display all the Supplier names in upper case.
+Ans2.
+Select upper(Sname) from s ;
++--------------+
+| upper(Sname) |
++--------------+
+| SMITH        |
+| JONES        |
+| BLAKE        |
+| CLARK        |
+| ADAMS        |
++--------------+
+5 rows in set (0.00 sec)
+
+3. Display all the Supplier names in lower case.
+Ans3.
+
+Select lower(Sname) from s;
++--------------+
+| lower(Sname) |
++--------------+
+| smith        |
+| jones        |
+| blake        |
+| clark        |
+| adams        |
++--------------+
+5 rows in set (0.00 sec)
+
+
+
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+Ans4.  Select lpad(Sname,25,'#') from s;
++---------------------------+
+| lpad(Sname,25,'#')        |
++---------------------------+
+| ####################Smith |
+| ####################Jones |
+| ####################Blake |
+| ####################Clark |
+| ####################Adams |
++---------------------------+
+5 rows in set (0.00 sec)
+
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).
+HINT: REPLACE.
+Ans5. 
+ select replace(sname,'la','ro') from s;
++--------------------------+
+| replace(sname,'la','ro') |
++--------------------------+
+| Smith                    |
+| Jones                    |
+| Broke                    |
+| Crork                    |
+| Adams                    |
++--------------------------+
+5 rows in set (0.00 sec)
+
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced with ‘o’.
+Ans6.
+select replace(replace(sname,'l','r'),'a','o') from s;
++-----------------------------------------+
+| replace(replace(sname,'l','r'),'a','o') |
++-----------------------------------------+
+| Smith                                   |
+| Jones                                   |
+| Broke                                   |
+| Crork                                   |
+| Adoms                                   |
++-----------------------------------------+
+5 rows in set (0.00 sec)
+
+7. Display the Supplier names and the lengths of the names.
+Ans7.
+ select sname,length(sname) from s;
++-------+---------------+
+| sname | length(sname) |
++-------+---------------+
+| Smith |             5 |
+| Jones |             5 |
+| Blake |             5 |
+| Clark |             5 |
+| Adams |             5 |
++-------+---------------+
+5 rows in set (0.00 sec)
+
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.
+Ans8.
+ select * from s where soundex(sname)=soundex('Bloke');
++------+-------+--------+-------+
+| S#   | SNAME | STATUS | CITY  |
++------+-------+--------+-------+
+| S3   | Blake |     30 | PARIS |
++------+-------+--------+-------+
+1 row in set (0.00 sec)
+
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).
+Ans9.Select  Sname, case
+    -> when status=10 then 'Ten'
+    -> when status=20 then 'Twenty'
+    -> when status=30 then 'Thirty'
+    -> else 'others'
+    -> end "STATUS"
+    -> from s;
++-------+--------
+| Sname | STATUS |
++-------+--------+
+| Smith | Twenty |
+| Jones | Ten    |
+| Blake | Thirty |
+| Clark | Twenty |
+| Adams | Thirty |
++-------+--------+
+
+10. Display the current day (e.g. Thursday).
+Ans10. select dayname(curdate()) from dual;
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Thursday           |
++--------------------+
+1 row in set (0.00 sec)

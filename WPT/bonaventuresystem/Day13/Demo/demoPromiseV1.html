@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Check(resolve, reject) {
+        if (10 > 2) {
+          resolve();
+        } else {
+          reject();
+        }
+      }
+
+      //   function Success() {
+      //     console.log("TRUE!");
+      //   }
+      //   function Failure() {
+      //     console.log("FALSE");
+      //   }
+
+      //   Check(Success, Failure);
+
+      function get() {
+        return new Promise(Check);
+      }
+
+      // var promise = get()
+
+      get()
+        .then(() => {
+          console.log("TRUE");
+        })
+        .then(() => {
+          console.log("ABCD");
+        })
+        .then(() => {
+          console.log("XYZ");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <center>
+      <input
+        type="button"
+        value="Get Data From Server Side"
+        onclick="GetData()"
+      />
+      <hr />
+      <table id="myTable" style="width: 400px" border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>EMail</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Avtar</th>
+          </tr>
+        </thead>
+        <tbody id="mybody"></tbody>
+      </table>
+    </center>
+    <script>
+      function GetData() {
+        var helper = new XMLHttpRequest();
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            var dataInStringFormat = helper.responseText;
+
+            debugger;
+            var dataInJSONFormat = JSON.parse(dataInStringFormat);
+
+            var users = dataInJSONFormat.data;
+            var refToMyTable = document.getElementById("mybody");
+            refToMyTable.innerHTML = "";
+
+            for (i = 0; i < users.length; i++) {
+              var user = users[i];
+
+              refToMyTable.innerHTML =
+                refToMyTable.innerHTML +
+                `<tr>
+                  <td>${user.id}</td>
+                  <td>${user.email}</td>
+                  <td>${user.first_name}</td>
+                  <td>${user.last_name}</td>
+                  <td>
+                    <img src="${user.avatar}" height="100px" width="100px"/>  
+                  </td>
+                </tr>`;
+            }
+          }
+        };
+
+        helper.open("GET", "https://reqres.in/api/users");
+        helper.send();
+      }
+    </script>
+  </body>
+</html>

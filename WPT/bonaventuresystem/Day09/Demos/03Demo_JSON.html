@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var players = [
+        { No: 10, Name: "Sachin", Age: 48, Expertise: ["Batting"] },
+        { No: 7, Name: "Mahendra", Age: 44, Expertise: ["Batting", "WK"] },
+        { No: 45, Name: "Rohit", Age: 37, Expertise: ["Batting"] },
+      ];
+
+      for (i = 0; i < players.length; i++) {
+        var player = players[i];
+        console.log(
+          `No = ${player.No}, Name = ${player.Name}, Age = ${player.Age}`
+        );
+        for (j = 0; j < player.Expertise.length; j++) {
+          console.log(` --- ${player.Expertise[j]}`);
+        }
+      }
+    </script>
+  </body>
+</html>

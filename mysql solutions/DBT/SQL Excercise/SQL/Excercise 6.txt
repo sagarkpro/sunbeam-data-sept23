@@ -1,0 +1,74 @@
+SQL Exercise 6
+
+1. Display all the Suppliers with the same Status as the supplier, ‘CLARK’.
+Ans1.
+  Select Sname from s
+    -> where  status =
+    -> (select status from s where sname='Clark');
++-------+
+| Sname |
++-------+
+| Smith |
+| Clark |
++-------+
+2 rows in set (0.00 sec)
+
+3. Display all the Parts which have more Weight than all the Red parts.
+Ans3.
+Select Pname from p
+    -> where weight > (select sum(weight) from s where color='Red');
+Empty set (0.00 sec)
+
+4. Display all the Projects going on in the same city as the project ‘TAPE’.
+Ans4.
+Select Jname from j
+    -> where city = (Select City from j where Jname='tape');
++-------+
+| Jname |
++-------+
+| RAID  |
+| Tape  |
++-------+
+2 rows in set (0.00 sec)
+
+5. Display all the Parts with Weight less than all the Green parts.
+Ans5.
+ Select Pname From p
+    -> where weight < (Select sum(weight) from p where color='Green');
++-------+
+| Pname |
++-------+
+| Nut   |
+| Screw |
+| Cam   |
++-------+
+3 rows in set (0.00 sec)
+
+6. Display the name of the Supplier who has sold the maximum Quantity (in one sale).
+Ans6. Select Sname,Qty from spj,s
+    -> where S.`S#`=spj.`S#` and
+    ->   qty=
+    ->   (Select Max(Qty) from spj);
++-------+------+
+| Sname | Qty  |
++-------+------+
+| Jones |  800 |
+| Adams |  800 |
++-------+------+
+2 rows in set (0.00 sec)
+
+8. Display the name of the Supplier who has sold the maximum overall Quantity (sum of Sales).
+Ans8.
+    Select S.Sname,Max(Summ) "SALES" from
+  (Select Sum(Qty) "Summ" from spj,s
+         where
+      S.`S#`=spj.`S#`
+   group by Sname) as tempp ,s;
++-------+-------+
+| Sname | SALES |
++-------+-------+
+| Adams |  3200 |
++-------+-------+
+1 row in set (0.00 sec)
+
+   

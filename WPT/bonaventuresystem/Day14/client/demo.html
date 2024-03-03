@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var express = () => {
+        return {
+          get: function (request, response) {
+            console.log("GET Called.");
+          },
+          post: function (request, response) {
+            console.log("POST Called.");
+          },
+        };
+      };
+
+      express.json = () => {
+        console.log("json made");
+      };
+      express.Router = () => {};
+
+      console.log(typeof express);
+      express.json();
+      var app = express();
+      app.get();
+    </script>
+  </body>
+</html>

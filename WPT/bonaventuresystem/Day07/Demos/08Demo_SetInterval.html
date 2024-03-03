@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" id="btnStart" value="Start" onclick="Start()" />
+    <input type="button" id="btnStop" disabled value="Stop" onclick="Stop()" />
+    <div style="background-color: lime" id="divData"></div>
+
+    <script>
+      var queueNosArray = new Array();
+      var counter = 0;
+
+      function Start() {
+        var refTobtnStart = document.getElementById("btnStart");
+        var refTobtnStop = document.getElementById("btnStop");
+
+        var queueNo = window.setInterval(KeepCounting, 1000);
+        queueNosArray.push(queueNo);
+        console.log("Queue Started " + queueNo);
+
+        refTobtnStart.disabled = "disabled";
+        refTobtnStop.disabled = null;
+      }
+
+      function Stop() {
+        var refTobtnStart = document.getElementById("btnStart");
+        var refTobtnStop = document.getElementById("btnStop");
+
+        var queueNo = queueNosArray.pop();
+        window.clearInterval(queueNo);
+        console.log("Queue Stopped " + queueNo);
+
+        refTobtnStart.disabled = null;
+        refTobtnStop.disabled = "disabled";
+
+        window.location.href = "08Demo_SetInterval.html";
+      }
+
+      function KeepCounting() {
+        counter = counter + 1;
+        var refToDivData = document.getElementById("divData");
+        refToDivData.innerText = counter;
+      }
+    </script>
+  </body>
+</html>

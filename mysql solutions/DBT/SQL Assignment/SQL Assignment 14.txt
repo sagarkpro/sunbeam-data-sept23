@@ -1,0 +1,34 @@
+SQL Assignment – 14
+
+1) Write a command that puts the following values, in their given order, into the salespeople table: 
+city – San Jose, name – Blanco, comm – NULL, cnum – 1100.
+Ans:INSERT INTO salespeople (city,sname,comm,snum)
+    VALUES('San Jose','Blanco',NULL,1100);
+     Query OK, 1 row affected (0.00 sec)
+
+2) Write a command that removes all orders from customer Clemens from the Orders table.
+Ans: DELETE
+    -> FROM orders
+    -> WHERE cnum IN
+    -> (SELECT cnum FROM customers
+    -> WHERE cname='Clemens');
+Query OK, 2 rows affected (0.01 sec)
+
+3) Write a command that increases the rating of all customers in Rome by 100.
+Ans:
+       UPDATE CUSTOMERS
+    -> SET RATING=RATING+100;
+Query OK, 7 rows affected (0.00 sec)
+Rows matched: 7  Changed: 7  Warnings: 0
+
+4) Salesperson Serres has left the company. Assign her customers to Motika.
+Ans: UPDATE customers
+    ->     SET snum=
+    ->     (SELECT snum FROM salespeople
+    ->      WHERE sname='Motika')
+    ->      WHERE snum = (SELECT snum
+    ->      FROM salespeople
+    ->      WHERE sname='Serres');
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+

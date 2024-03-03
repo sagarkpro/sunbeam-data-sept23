@@ -1,0 +1,129 @@
+Create table Dept_tb(Dept_id char(5) primary key,Dept varchar(25));
+insert into Dept_tb(Dept_id,Dept) values
+     ('1','Electronics'),
+     ('2','Civil'),
+     ('3','Chemical');
+Create table Emp_tb(Emp_id char(5) primary key,name varchar(15),city varchar (15),state varchar(25),
+                     salary float,Dept_id char(5),
+                     constraint fk_emp_id foreign key(Dept_id) References Dept_tb(Dept_id));
+insert into Emp_tb(Emp_id,name,city,state,salary,Dept_id) values
+('1','Abhishek','Mumbai','MH',12000,'1'),
+('2','Deepak','Pune','MH',15000,'2'),
+('3','Ravi','Surat','Gujarat',7000,'1'),
+('4','Radha','Delhi','Delhi',19000,'1'),
+('5','Suman','Panjim','Gao',14000,'3'),
+('6','Adhik','Satara','MH',10000,'2');
+
+1. List name of employees who is working in Dept "Electronics" ?.(using sub query)
+Ans:
+Select name from Emp_tb where Dept_id = (Select Dept_id from Dept_tb where Dept ='Electronics'); 
++----------+
+| name     |
++----------+
+| Abhishek |
+| Ravi     |
+| Radha    |
++----------+
+2. Find all the department which have more than and equal 2 Employees.(Use having clause)
+Ans: 
+Select Dept,count(Emp_id) from Emp_tb,Dept_tb
+    -> Where Dept_tb.Dept_id=Emp_tb.Dept_id
+    -> Group By Emp_tb.Dept_id
+    -> Having count(Emp_id)>=2;
++-------------+---------------+
+| Dept        | count(Emp_id) |
++-------------+---------------+
+| Electronics |             3 |
+| Civil       |             2 |
++-------------+---------------+
+
+3. Display the Position at which the string 'dh' occurs in name.
+Ans:
+Select Instr(name,'dh') from Emp_tb;
++------------------+
+| Instr(name,'dh') |
++------------------+
+|                0 |
+|                0 |
+|                0 |
+|                3 |
+|                0 |
+|                2 |
++------------------+
+4. Change name of column "Salary" to "Sal".
+Ans: 
+alter table Emp_tb rename column Salary to sal ;
+ select * from Emp_tb;
++--------+----------+--------+---------+-------+---------+
+| Emp_id | name     | city   | state   | sal   | Dept_id |
++--------+----------+--------+---------+-------+---------+
+| 1      | Abhishek | Mumbai | MH      | 12000 | 1       |
+| 2      | Deepak   | Pune   | MH      | 15000 | 2       |
+| 3      | Ravi     | Surat  | Gujarat |  7000 | 1       |
+| 4      | Radha    | Delhi  | Delhi   | 19000 | 1       |
+| 5      | Suman    | Panjim | Gao     | 14000 | 3       |
+| 6      | Adhik    | Satara | MH      | 10000 | 2       |
++--------+----------+--------+---------+-------+---------+
+6 rows in set (0.00 sec)
+
+5. Write query for to increment sal 10% whose dept_id=1,increament sal 20% whose dept_id=2 and other 30% .(Use only case)
+
+
+Update Emp_tb set sal = Case Dept_id
+    ->
+    -> when '1' then sal+(sal*0.1)
+    ->
+    -> when '2' then sal+(sal*0.2)
+    ->
+    -> else sal+(sal*0.3)
+    -> end
+    -> Where Dept_id In('1','2','3')
+    -> ;
+
+6. Wirte Current date in following format.
+e.g Sunday,2nd Mar 2020.
+
+
+Select Date_format(CurDate(),'%a,%c,%d' from dual;
+
+7. List of Employee while names start with 'A' and ends with 'a'.
+Select name from Emp_tb where name like ('A%') and name like ('%a') ;
++-----------+
+| name      |
++-----------+
+| Abhisheka |
++-----------+
+1 row in set (0.00 sec)
+
+8. List all the employee who are located in Mumbai.
+
+Select * from Emp_tb where city='Mumbai';
++--------+----------+--------+-------+-------+---------+
+| Emp_id | name     | city   | state | sal   | Dept_id |
++--------+----------+--------+-------+-------+---------+
+| 1      | Abhishek | Mumbai | MH    | 13200 | 1       |
++--------+----------+--------+-------+-------+---------+
+1 row in set (0.00 sec)
+9. List the Employee Name that start with 'R'.
+Select name from Emp_tb where name like 'R%';
++-------+
+| name  |
++-------+
+| Ravi  |
+| Radha |
++-------+
+2 rows in set (0.00 sec)
+
+10. select all emp whose Dept is other than Electronics and salary is less than 15000.(use sub query)
+
+Select * from Emp_tb
+    -> where Dept_id In(Select Dept_id from dept_tb where dept!='Electronics') and Emp_id In(Select Emp_id from Emp_tb where sal<15000) ;
++--------+-------+--------+-------+-------+---------+
+| Emp_id | name  | city   | state | sal   | Dept_id |
++--------+-------+--------+-------+-------+---------+
+| 6      | Adhik | Satara | MH    | 12000 | 2       |
++--------+-------+--------+-------+-------+---------+
+1 row in set (0.00 sec)m Emp_tb where sal<15000) ;
+
+Select name, Dept_tb.dept_id from Emp_tb,Dept_tb
+where Dept_tb.dept_id=Emp_tb.Dept_id and sal<15000 and dept!='Electronics';

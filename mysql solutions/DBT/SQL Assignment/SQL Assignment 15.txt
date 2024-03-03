@@ -1,0 +1,38 @@
+SQL Assignment – 15
+
+1) Assume there is a table called Multicust, with all of the same column definitions as Salespeople. 
+Write a command that inserts all salespeople with more than one customer into this table.
+Ans:
+CREATE TABLE Multicast AS
+    -> SELECT *
+    -> FROM salespeople
+    -> WHERE snum IN
+    ->      (SELECT snum
+    ->      FROM customers
+    ->      GROUP BY snum
+    ->      HAVING count(snum)>1);
+Query OK, 2 rows affected, 1 warning (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+mysql> select * from multicast;
++------+--------+--------+------+
+| Snum | Sname  | City   | Comm |
++------+--------+--------+------+
+| 1001 | Peel   | London | 0.12 |
+| 1004 | Motika | London | 0.11 |
++------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+2) Write a command that deletes all customers with no current orders.
+Ans:
+Delete customers
+where cnum=ANY(select cnum from orders where cnum NOT IN
+(Select cnum from customers));
+
+
+3) Write a command that increases by twenty percent the commissions of all salespeople
+ with total orders above Rs. 3,000.
+Ans:
+Update salespeople
+set comm=comm*1.20
+where snum in(select snum from orders where amt>300);

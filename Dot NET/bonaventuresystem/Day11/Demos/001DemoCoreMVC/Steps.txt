@@ -1,0 +1,65 @@
+﻿1. Write Class:
+
+  [Table("Emp")]
+    public class Emp
+    {
+        [Key]
+        public int No { get; set; }
+
+        //[Column("EName", TypeName ="nvarchar(50)")]
+        public string? Name { get; set; }
+        public string? Address { get; set; }
+
+        public int Age { get; set; }
+    }
+//----------------------------------------------------
+2. Add DataContext Class:
+ public class PGDACDbContext : DbContext
+    {
+        public PGDACDbContext(DbContextOptions options) : base(options)
+        {
+            
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+        }
+        public DbSet<Emp> Emps { get; set;}
+    }
+
+//----------------------------------------------------
+3.  Add Connection String in appsettings.json:
+ "ConnectionStrings": { "con": "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=PGDAC;Integrated Security=True;" }
+
+//----------------------------------------------------
+
+4. Add DBContext in DI in main method:
+
+builder.Services.AddDbContext<PGDACDbContext>(options => {
+                options.UseSqlServer("name=con");
+            });
+//----------------------------------------------------
+
+5. Compile Application
+//----------------------------------------------------
+
+6. add-migration <Name>
+7. update-database
+//----------------------------------------------------
+
+8. Use the Context in Controller & use it
+
+  private PGDACDbContext _dbContext;
+        public HomeController(PGDACDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        public IActionResult Index()
+        {
+            return View(_dbContext.Emps.ToList());
+        }
+}
+
+
+
+

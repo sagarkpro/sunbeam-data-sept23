@@ -1,0 +1,209 @@
+SQL Exercise 5
+
+1. Display the Supplier name and the Quantity sold.
+Ans1.
+select sname,Sum(Qty) from spj,s
+    -> where spj.`S#`=s.`S#`
+    -> group by s.`S#`;
++-------+----------+
+| sname | Sum(Qty) |
++-------+----------+
+| Smith |      900 |
+| Jones |     3200 |
+| Blake |      700 |
+| Clark |      600 |
+| Adams |     3100 |
++-------+----------+
+5 rows in set (0.00 sec)
+
+2. Display the Part name and Quantity sold.
+Ans2.
+
+select pname,Sum(Qty) from spj,p
+    ->      where spj.`P#`=p.`P#`
+    ->     group by p.`P#`;
++-------+----------+
+| pname | Sum(Qty) |
++-------+----------+
+| Nut   |     1000 |
+| Screw |     3500 |
+| Cam   |     1100 |
+| Screw |     1300 |
+| Cog   |     1300 |
+| Bolt  |      300 |
++-------+----------+
+
+3. Display the Project name and Quantity sold.
+Ans3.
+
+ select jname,Sum(Qty) from spj,j
+    ->      where spj.`J#`=j.`J#`
+    ->     group by j.`J#`;
++---------+----------+
+| jname   | Sum(Qty) |
++---------+----------+
+| Sorter  |      800 |
+| Console |     3300 |
+| Display |     1200 |
+| OCR     |      500 |
+| RAID    |     1100 |
+| EDS     |      400 |
+| Tape    |     1200 |
++---------+----------+
+7 rows in set (0.00 sec)
+
+4. Display the Supplier name, Part name, Project name and Quantity sold.
+Ans4.
+Select Sname,Pname,Jname,Qty from spj,p,j,s
+    -> where
+    -> S.`S#`=spj.`S#`
+    -> and
+    -> P.`P#`=spj.`P#`
+    -> and
+    -> J.`J#`=spj.`J#`;
++-------+-------+---------+------+
+| Sname | Pname | Jname   | Qty  |
++-------+-------+---------+------+
+| Jones | Screw | Sorter  |  400 |
+| Blake | Screw | Sorter  |  200 |
+| Smith | Nut   | Sorter  |  200 |
+| Adams | Cog   | Display |  200 |
+| Jones | Cam   | Display |  100 |
+| Blake | Screw | Display |  500 |
+| Jones | Screw | Display |  200 |
+| Adams | Bolt  | Display |  200 |
+| Clark | Cog   | OCR     |  300 |
+| Jones | Screw | OCR     |  200 |
+| Adams | Cog   | Console |  500 |
+| Adams | Cam   | Console |  400 |
+| Adams | Screw | Console |  800 |
+| Jones | Screw | Console |  500 |
+| Adams | Screw | Console |  200 |
+| Adams | Bolt  | Console |  100 |
+| Smith | Nut   | Console |  700 |
+| Adams | Nut   | Console |  100 |
+| Adams | Cam   | RAID    |  500 |
+| Jones | Screw | RAID    |  600 |
+| Jones | Screw | EDS     |  400 |
+| Clark | Cog   | Tape    |  300 |
+| Adams | Cam   | Tape    |  100 |
+| Jones | Screw | Tape    |  800 |
++-------+-------+---------+------+
+24 rows in set (0.00 sec)
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+Ans5.
+Select Sname,Pname,Jname,S.city from spj,p,j,s
+    -> where
+    -> S.`S#`=spj.`S#`
+    -> and
+    -> P.`P#`=spj.`P#`
+    -> and
+    -> J.`J#`=spj.`J#`
+    -> and s.city=j.city
+    -> and s.city=p.city
+    -> ;
++-------+-------+-------+--------+
+| Sname | Pname | Jname | city   |
++-------+-------+-------+--------+
+| Clark | Cog   | Tape  | LONDON |
++-------+-------+-------+--------+
+1 row in set (0.00 sec)
+
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold.
+Ans6.
+ select Pname,Sum(Qty) from spj,p
+    -> where p.`P#`=spj.`P#` and Color='Red'
+    -> group by Pname;
++-------+----------+
+| Pname | Sum(Qty) |
++-------+----------+
+| Nut   |     1000 |
+| Screw |     1300 |
+| Cog   |     1300 |
++-------+----------+
+3 rows in set (0.00 sec)
+
+7. Display all the Quantity sold by Suppliers with the Status = 20.
+Ans7.
+select Sname,sum(Qty) from spj,s
+    -> where s.`S#`=spj.`S#` and status=20
+    -> group by Sname;
++-------+----------+
+| Sname | sum(Qty) |
++-------+----------+
+| Smith |      900 |
+| Clark |      600 |
++-------+----------+
+2 rows in set (0.00 sec)
+
+8. Display all the Parts and Quantity with a Weight > 14.
+Ans8.
+Select Pname,Qty from spj,p
+    -> where p.`P#`=spj.`P#` and Weight>14;
++-------+------+
+| Pname | Qty  |
++-------+------+
+| Screw |  400 |
+| Screw |  200 |
+| Screw |  200 |
+| Screw |  500 |
+| Screw |  600 |
+| Screw |  400 |
+| Screw |  800 |
+| Screw |  200 |
+| Cog   |  300 |
+| Cog   |  300 |
+| Bolt  |  200 |
+| Bolt  |  100 |
+| Cog   |  200 |
+| Screw |  200 |
+| Cog   |  500 |
++-------+------+
+15 rows in set (0.00 sec)
+
+9. Display all the Project names and City, which has bought more than 500 Parts.
+Ans9.
+
+Select Jname,J.City from spj,j
+    -> where j.`J#`=spj.`J#` and Qty>500;
++---------+--------+
+| Jname   | City   |
++---------+--------+
+| Console | ATHENS |
+| RAID    | LONDON |
+| Tape    | LONDON |
+| Console | ATHENS |
++---------+--------+
+4 rows in set (0.00 sec)
+
+10. Display all the Part names and Quantity sold that have a Weight less than 15.
+Ans10.Select Pname,Qty from spj,p
+    -> where p.`P#`=spj.`P#` and weight<15;
++-------+------+
+| Pname | Qty  |
++-------+------+
+| Nut   |  200 |
+| Nut   |  700 |
+| Cam   |  100 |
+| Screw |  500 |
+| Cam   |  500 |
+| Cam   |  100 |
+| Nut   |  100 |
+| Screw |  800 |
+| Cam   |  400 |
++-------+------+
+9 rows in set (0.00 sec)
+
+11. Display all the Employee names and the name of their Managers.
+Ans11: //DOUBT
+SELECT A.EMPNAME EMPLOYEE,A.DEPTHEAD,IFNULL(A.DEPTHEAD,A.DEPTHEAD),B.EMPNAME MANAGER FROM SEMP A,SEMP B
+    -> WHERE
+    -> B.EMPNO=A.DEPTHEAD;
++----------+----------+-------------------------------+---------+
+| EMPLOYEE | DEPTHEAD | IFNULL(A.DEPTHEAD,A.DEPTHEAD) | MANAGER |
++----------+----------+-------------------------------+---------+
+| ALI      | 0001     | 0001                          | SUNIL   |
+| GEORGE   | 0002     | 0002                          | HIREN   |
++----------+----------+-------------------------------+---------+
+2 rows in set (0.00 sec)

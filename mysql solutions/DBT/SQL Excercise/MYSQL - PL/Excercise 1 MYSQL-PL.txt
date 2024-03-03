@@ -1,0 +1,83 @@
+MySQL-PL Exercise 1
+
+
+Q1:Write a program that computes the perimeter and the area of a rectangle. 
+Define your own values for the length and width. (Assuming that L and W are the length and width of the rectangle, 
+Perimeter = 2*(L+W) and Area = L*W.
+Ans:
+delimiter //
+create procedure rec (L float,W float)
+begin
+declare Perimeter float;
+declare Area float;
+set Perimeter = 2*(L+W);
+set Area = L*W;
+insert into op values (Perimeter,Area);
+end //
+delimiter ;
+
+call rec(10.2,4);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from op;
++------+------+
+| fir  | sec  |
++------+------+
+| 28.4 | 40.8 |
++------+------+
+
+Q2:Convert a temperature in Fahrenheit (F) to its equivalent in Celsius (C) and vice versa.
+The required formulae are:- C= (F-32)*5/9
+F= 9/5*C + 32
+Ans:
+delimiter //
+create procedure temp (Temp float, Unit varchar(20))
+begin
+declare T float;
+if Unit in ('f','F') then
+set T = (Temp-32)*5/9;
+insert into temp values (T,'Celcius');
+elseif Unit in ('c','C') then
+set T = 9/5*Temp + 32;
+insert into temp values (T,'Fahrenheit');
+end if;
+end // 
+delimiter ;
+
+ call temp(100,'c');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from temp;
++------+------------+
+| Temp | Unit       |
++------+------------+
+|  212 | Fahrenheit |
++------+------------+
+
+
+
+Q3:Write a program that enables a user to input an integer. 
+The program should then state whether the integer is evenly divisible by 5.
+Ans:
+create table temp(val int,Possible varchar(25));
+delimiter //
+create procedure eve(x int)
+begin
+declare z int;
+set z = mod(x,5);
+if z != 0 then
+insert into temp values (x,'NotEvenDivisible');
+else
+insert into temp values (x,'EvenlyDivisible');
+end if;
+end //
+delimiter ;
+ 
+call eve(10);
+select * from temp;
++------+-----------------+
+| val  | Possible        |
++------+-----------------+
+|   10 | EvenlyDivisible |
++------+-----------------+
+1 row in set (0.00 sec)

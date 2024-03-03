@@ -1,0 +1,25 @@
+#########   SQL ASSIGNMENT 2 ##########
+
+Q1: Which field of the customers table is the primary key?
+Ans: Cnum
+
+
+
+Q2: What is the 4th column of the customers table?
+Ans: Rating
+
+
+Q3: What is anoher word for row? For column?
+Ans: Row: Tuple,Entity
+     Column: Attribute, Key
+
+
+Q4: Why isn't possible to see the first five rows of a table?
+Ans: At the time of saving the rows in server database hard disk, the rows get saved on the
+     addresses available at that time or we can say that they get fragmentted all over the server database hard disk,
+     and not in a sequential manner.Hence when we want to retrieve the first five rows back it will not be possible to retrieve
+     them in a sequence,we will get the rows which are first available in the server database hard disk.
+
+  
+  
+

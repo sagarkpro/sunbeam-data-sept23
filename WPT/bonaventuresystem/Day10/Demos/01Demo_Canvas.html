@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <center> -->
+    <input type="button" value="Draw" onclick="Draw()" />
+    <br />
+    <canvas
+      id="myCanvas"
+      style="
+        height: 500px;
+        width: 700px;
+        background-color: cornsilk;
+        border: 1px solid black;
+      "
+    >
+    </canvas>
+    <!-- </center> -->
+
+    <script>
+      function Draw() {
+        var refToMyCanvas = document.getElementById("myCanvas");
+        var refToDrawingContext = refToMyCanvas.getContext("2d");
+        refToDrawingContext.moveTo(0, 0);
+        refToDrawingContext.lineTo(100, 100);
+        refToDrawingContext.stroke();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+#########   SQL ASSIGNMENT 7 ##########
+
+1) Write a query that counts all orders for October 3.
+Ans1: 
+      Select count(*) from Orders
+      where Odate in('1990-10-03');
+      +----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+
+2) Write a query that counts the number of different non-NULL city values in the Customers table.
+Ans2: Select count(*) from Customers 
+      where city is not null;
+          +----------+
+| count(*) |
++----------+
+|        7 |
++----------+
+
+3) Write a query that selects each customer’s smallest order.
+Ans3: 
+Ans3: select cnum,min(amt) from orders
+    ->       group by cnum;
++------+----------+
+| cnum | min(amt) |
++------+----------+
+| 2008 |    18.69 |
+| 2001 |   767.19 |
+| 2007 |  1900.10 |
+| 2003 |  5160.45 |
+| 2002 |  1713.23 |
+| 2004 |    75.75 |
+| 2006 |  4723.00 |
++------+----------+
+
+4) Write a query that selects the first customer, in alphabetical order, whose name begins with G.
+Ans4: Select Cname from customers
+    ->       where cname like 'G%';
++----------+
+| Cname    |
++----------+
+| Giovanni |
+| Grass    |
++----------+
+
+5) Write a query that selects the highest rating in each city.
+Ans5: select city,max(rating) from customers
+    -> group by city;
++----------+-------------+
+| city     | max(rating) |
++----------+-------------+
+| London   |         100 |
+| Rome     |         200 |
+| San Jose |         300 |
+| Berlin   |         300 |
++----------+-------------+
+
+6) Write a query that counts the number of salespeople registering orders for each day. (If a salesperson has more than one order on a given day, he or she should be counted only once.).
+Ans6:Select odate,count(distinct Snum)
+    ->           from Orders
+    ->           group by odate;
++------------+----------------------+
+| odate      | count(distinct Snum) |
++------------+----------------------+
+| 1990-10-03 |                    4 |
+| 1990-10-04 |                    2 |
+| 1990-10-05 |                    1 |
+| 1990-10-06 |                    2 |
++------------+----------------------+
+4 rows in set (0.01 sec)

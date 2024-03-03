@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //-------------------------------------------------------------
+      //---------------Writing Normal Function-------------
+      //-------------------------------------------------------------
+
+      //   function Print(name) {
+      //     console.log("Hello " + name);
+      //   }
+
+      //   Print("Mahesh");
+
+      //-------------------------------------------------------------
+      //---------------Holding Function in a Variable -------------
+      //-------------------------------------------------------------
+
+      //   var Print = function (name) {
+      //     console.log("Hello " + name);
+      //   };
+
+      //   debugger;
+      //   Print("Mahesh");
+
+      //-------------------------------------------------------------
+      //---------------Passing Function as Parameter -------------
+      //-------------------------------------------------------------
+
+      //   debugger;
+      //   var X = function () {
+      //     console.log("Success");
+      //   };
+
+      //   //   X = 100;
+
+      //   function Y(data) {
+      //     console.log("Failure! " + data);
+      //   }
+
+      //   function DoSomething(f1, f2) {
+      //     if (10 > 2) {
+      //       f1();
+      //     } else {
+      //       f2(1234);
+      //     }
+      //   }
+
+      //   debugger;
+      //   DoSomething(X, Y);
+
+      //-------------------------------------------------------------
+      //---------------Returning Function as return value ----------
+      //-------------------------------------------------------------
+
+      //   function GetMeSomething(temp) {
+      //     var HaveCoke = function () {
+      //       console.log("Have coke");
+      //     };
+      //     var HaveTea = function () {
+      //       console.log("Have Tea");
+      //     };
+      //     if (temp > 30) {
+      //       return HaveCoke;
+      //     } else {
+      //       return HaveTea;
+      //     }
+      //   }
+
+      //   debugger;
+      //   var GetDrink = GetMeSomething(10);
+      //   GetDrink();
+
+      //-------------------------------------------------------------
+      //--------------- Literal Syntax for Writing Class: ------------
+      //-------------------------------------------------------------
+
+      //   var Person = {
+      //     Name: "Mahesh",
+      //     Address: "Pune",
+      //     Print: function () {
+      //       console.log(this.Name + this.Address);
+      //     }
+      //   };
+
+      //   debugger;
+      //   Person.Print();
+
+      //   var Employee = {
+      //     Department: "IT",
+      //     Print: function () {
+      //       console.log(this.Name + this.Address + this.Department);
+      //     },
+      //   };
+
+      //   debugger;
+      //   Employee.__proto__ = Person; //Defining Inheritance
+
+      //   Employee.Print();
+
+      //-------------------------------------------------------------
+      //-Function Keyword for Writing a Class (Constructor Function)-
+      //-------------------------------------------------------------
+
+      //   var Person = function (name, address) {
+      //     debugger;
+      //     this.Name = name;
+      //     this.Address = address;
+      //     this.Print = function () {
+      //       debugger;
+      //       console.log(this.Name + this.Address);
+      //     };
+      //   };
+      //   debugger;
+      //   var p1 = new Person("Mahesh", "Pune");
+      //   p1.Print();
+
+      //-------------------------------------------------------------
+      //-Class Keyword for Writing a Class (ECMA 6 Concept:Year 2015)-
+      //-------------------------------------------------------------
+
+      //   class Person {
+      //     constructor(name, address) {
+      //       this.Name = name;
+      //       this.Address = address;
+      //     }
+
+      //     Print() {
+      //       console.log(this.Name + this.Address);
+      //     }
+      //   }
+      //   debugger;
+
+      //   //   var p1 = new Person("mahesh", "pune");
+      //   //   var p2 = new Person("nilesh", "panji");
+      //   //   debugger;
+      //   //   p1.Print();
+      //   //   p2.Print();
+
+      //   class Employee extends Person {
+      //     constructor(name, address, dept) {
+      //       super(name, address);
+      //       this.Dept = dept;
+      //     }
+
+      //     Print() {
+      //       console.log(this.Name + this.Address + this.Dept);
+      //     }
+      //   }
+
+      //   debugger;
+      //   var e1 = new Employee("mahesh", "pune", "IT");
+      //   e1.Print();
+
+      //-------------------------------------------------------------
+      //---------Arrow Function Syntax---(ECMA 6 Concept:Year 2015)--
+      //-------------------------------------------------------------
+
+      //   var Add = (x, y) => {
+      //     console.log(x + y);
+      //   };
+
+      //   debugger;
+      //   Add(50, 10);
+
+      //   window.setInterval(() => {
+      //     console.log("Hello");
+      //   }, 1000);
+
+      //   window.setInterval(() => {
+      //     // Add(10, 20);
+      //     // alert("hi");
+      //   }, 1000);
+    </script>
+  </body>
+</html>

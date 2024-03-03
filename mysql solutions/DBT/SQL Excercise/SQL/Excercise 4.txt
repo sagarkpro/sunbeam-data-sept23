@@ -1,0 +1,167 @@
+SQL Exercise 4
+
+1. Display the minimum Status in the Supplier table.
+Ans:1.
+ Select min(status) from s;
++-------------+
+| min(status) |
++-------------+
+|          10 |
++-------------+
+1 row in set (0.00 sec)
+
+2. Display the maximum Weight in the Parts table.
+Ans:2.
+  Select max(weight) from p;
++-------------+
+| max(weight) |
++-------------+
+|          19 |
++-------------+
+1 row in set (0.00 sec)
+
+3. Display the average Weight of the Parts.
+Ans:3.
+Select avg(weight) from p;
++-------------+
+| avg(weight) |
++-------------+
+|     15.1667 |
++-------------+
+1 row in set (0.00 sec)
+
+4. Display the total Quantity sold for part ‘P1’.
+Ans:4.
+Select `P#`,Sum(Qty) from spj
+    -> where `P#`='P1'
+    -> group by `P#`;
++------+----------+
+| P#   | Sum(Qty) |
++------+----------+
+| P1   |     1000 |
++------+----------+
+1 row in set (0.00 sec)
+
+5. Display the total Quantity sold for each part.
+Ans:5.
+select P.`P#`,pname,sum(qty) from spj,p
+where spj.`P#`=p.`P#`
+ group by `P#`;
++------+-------+----------+
+| P#   | pname | sum(qty) |
++------+-------+----------+
+| P1   | Nut   |     1000 |
+| P3   | Screw |     3500 |
+| P5   | Cam   |     1100 |
+| P4   | Screw |     1300 |
+| P6   | Cog   |     1300 |
+| P2   | Bolt  |      300 |
++------+-------+----------+
+6 rows in set (0.00 sec)
+
+6. Display the average Quantity sold for each part.
+Ans:6.
+select P.`P#`,pname,avg(qty) from spj,p
+    -> where spj.`P#`=p.`P#`
+    ->  group by `P#`;
++------+-------+----------+
+| P#   | pname | avg(qty) |
++------+-------+----------+
+| P1   | Nut   | 333.3333 |
+| P3   | Screw | 388.8889 |
+| P5   | Cam   | 275.0000 |
+| P4   | Screw | 650.0000 |
+| P6   | Cog   | 325.0000 |
+| P2   | Bolt  | 150.0000 |
++------+-------+----------+
+
+7. Display the maximum Quantity sold for each part, provided the maximum Quantity is *greater* //empty set//  than 800.
+Ans:7.
+SELECT P.`P#`,PNAME,MAX(QTY) FROM SPJ,P
+    -> WHERE P.`P#`=SPJ.`P#`
+    -> GROUP BY PNAME
+    -> HAVING MAX(QTY)<800;
++------+-------+----------+
+| P#   | PNAME | MAX(QTY) |
++------+-------+----------+
+| P1   | Nut   |      700 |
+| P5   | Cam   |      500 |
+| P6   | Cog   |      500 |
+| P2   | Bolt  |      200 |
++------+-------+----------+
+4 rows in set (0.00 sec)
+
+8. Display the Status and the count of Suppliers with that Status.
+Ans:8.
+Select Count(Sname),Status from s
+    -> group by status;
++--------------+--------+
+| Count(Sname) | Status |
++--------------+--------+
+|            2 |     20 |
+|            1 |     10 |
+|            2 |     30 |
++--------------+--------+
+3 rows in set (0.00 sec)
+
+9. Display the count of Projects going on in different cities.
+Ans:9.
+
+Select count(Jname),city from j
+    -> group by city;
++--------------+--------+
+| count(Jname) | city   |
++--------------+--------+
+|            1 | PARIS  |
+|            1 | ROME   |
+|            2 | ATHENS |
+|            2 | LONDON |
+|            1 | OSLO   |
++--------------+--------+
+5 rows in set (0.00 sec)
+
+10. What is the difference between COUNT(Status) and COUNT(*) ?
+Ans:10. Count(*) gives the total number of rows in the table.
+Select count(*) from s;
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+Count(Status) gives the number of status entry in the table.
+mysql> Select count(status) from s;
++---------------+
+| count(status) |
++---------------+
+|             5 |
++---------------+
+1 row in set (0.00 sec)
+
+11. Display the Status and the Count of Suppliers with that Status in the following format as shown below:-
+Status Count
+Ten      1
+Twenty   2
+Thirty   3
+Ans:11. 
+Select case
+    -> when status=10 then 'Ten'
+    -> when status=20 then 'Twenty'
+    -> when status=30 then 'Thirty'
+    -> else 'Others'
+    -> end "STATUS",
+    -> Count(Sname) "Count"
+    -> from s
+    -> group by status;
++--------+-------+
+| STATUS | Count |
++--------+-------+
+| Twenty |     2 |
+| Ten    |     1 |
+| Thirty |     2 |
++--------+-------+
+
+
+
+

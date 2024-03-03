@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var express = () => {
+      //     console.log("express is function");
+      //   };
+
+      //   express.json = () => {
+      //     console.log("json function called ");
+      //   };
+
+      //   express();
+
+      //   express.json();
+
+      var person = {
+        name: "mahesh",
+        print: function () {
+          console.log("print");
+        },
+      };
+
+      console.log(person);
+
+      person.address = "chennai";
+      delete person.print;
+
+      console.log(person);
+
+      //   console.log(person.name);
+      //   person.print();
+    </script>
+  </body>
+</html>

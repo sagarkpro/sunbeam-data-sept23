@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Test DOM</title>
+  </head>
+  <body>
+    <input type="button" value="Click Me" onclick="DoSomething()" />
+    <div
+      id="MyDiv"
+      style="height: 200px; width: 200px; background-color: yellow"
+    >
+      Test
+    </div>
+    <script>
+      function DoSomething() {
+        var refToMyDiv = document.getElementById("MyDiv");
+        refToMyDiv.style.backgroundColor = "Red";
+      }
+    </script>
+  </body>
+</html>

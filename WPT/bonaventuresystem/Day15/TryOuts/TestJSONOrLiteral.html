@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var emp = { No: 1, Name: "Mahesh", Address: "Pune" };
+
+      console.log(emp);
+
+      //   emp.No = 2;
+      //   emp.Name = "Nilesh";
+
+      //   emp["No"] = 2;
+      //   emp["Name"] = "Nilesh";
+
+      var propertyName = "No";
+      emp[propertyName] = 2;
+      emp["Name"] = "Nilesh";
+
+      console.log(emp);
+    </script>
+  </body>
+</html>

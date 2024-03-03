@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   debugger;
+      //   var counter = 0;
+      //   function Set() {
+      //     let counter = 0;
+      //     console.log("Before Increase " + counter);
+      //     counter = counter + 10;
+      //     console.log("After Increase " + counter);
+      //     if (true) {
+      //       let counter = 55;
+      //       console.log(counter);
+      //     }
+
+      //     console.log(counter);
+      //   }
+
+      //   console.log("Before Set Function Call " + counter);
+      //   Set();
+      //   console.log("After Set Function Call " + counter);
+    </script>
+
+    <script>
+      ////Below is ECMA 6 code runnable after 2015
+      //   const f = function () {
+      //     console.log("Hi");
+      //   };
+      //   f = 10;      ///Here you should get error
+      //   f();
+
+      ////Below is equivalent of 2015 and before code
+      var f = function f() {
+        console.log("Hi");
+      };
+      f = 10; ///You will not get error here due to var
+      debugger;
+      (function () {
+        throw new TypeError("f variable is read-only");
+      })(); // Throwing Error More of manually
+      f();
+    </script>
+  </body>
+</html>

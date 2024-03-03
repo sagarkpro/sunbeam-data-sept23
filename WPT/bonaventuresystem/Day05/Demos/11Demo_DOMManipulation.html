@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Test DOM</title>
+  </head>
+  <body>
+    <input type="button" value="Move Right" onclick="MoveRight()" />
+    <img id="myCar" style="height: 100px; width: 100px" src="car.jpg" />
+    <script>
+      var leftMargin = 0;
+
+      function MoveRight() {
+        var refToMyDiv = document.getElementById("myCar");
+        leftMargin = leftMargin + 10;
+        refToMyDiv.style.marginLeft = leftMargin + "px";
+      }
+    </script>
+  </body>
+</html>
